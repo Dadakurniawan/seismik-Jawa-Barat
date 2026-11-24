@@ -1,0 +1,27 @@
+<!doctype html><html lang="id" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Seismik Jawa Barat 1931–2026</title><meta name="theme-color" content="#0b1220"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/icon-192.png"><link rel="stylesheet" href="lib/leaflet.css"><link rel="stylesheet" href="style.css"></head><body>
+<header><div class="brand"><span class="logo">◉</span><div><h1>Seismik Jawa Barat</h1><small>Katalog gempa 1931–2026</small></div></div>
+<nav id="tabs"><button data-t="peta" class="on">🗺 Peta</button><button data-t="stat">📊 Statistik</button><button data-t="cross">⛰ Penampang</button><button data-t="tabel">📋 Tabel</button></nav>
+<div class="act"><button id="filtBtn" class="ic" title="Filter">⚙</button><button id="theme" class="ic" title="Ganti tema">☀</button></div></header>
+<main>
+<aside id="side"><div id="kpi" class="kpis"></div>
+<label>Tahun<div class="r"><input id="y1" type="number" value="1931" min="1931" max="2026"><input id="y2" type="number" value="2026" min="1931" max="2026"></div></label>
+<label>Magnitudo<div class="r"><input id="m1" type="number" value="3.4" min="3.4" max="6.5" step="0.1"><input id="m2" type="number" value="6.5" min="3.4" max="6.5" step="0.1"></div></label>
+<label>Kedalaman (km)<div class="r"><input id="d1" type="number" value="0" min="0" max="330"><input id="d2" type="number" value="330" min="0" max="330"></div></label>
+<label>Cari lokasi<input id="q" type="search" placeholder="mis. Tasikmalaya"></label>
+<button id="rst">Reset filter</button><button id="inst" hidden>⬇ Install aplikasi</button>
+<p class="note">Sumber: USGS / ISC-GEM (295 kejadian). Jumlah gempa sebelum ±1970 sedikit karena keterbatasan alat pencatat, bukan karena aktivitas yang lebih rendah. Sebagian besar magnitudo bertipe <i>mb</i>.</p></aside>
+<div id="views">
+<section id="peta" class="view"><div id="map"></div>
+<div class="ov top"><button id="mt" class="on">Titik</button><button id="mh">Heatmap</button></div>
+<div class="ov leg"><b>Kedalaman</b><span><i style="background:#ef4444"></i>&lt;70 km</span><span><i style="background:#f59e0b"></i>70–150</span><span><i style="background:#22d3ee"></i>150–300</span><span><i style="background:#a78bfa"></i>&gt;300</span><small>Ukuran = magnitudo</small></div>
+<div class="ov tl"><button id="play">▶</button><input id="tl" type="range" min="1931" max="2026" value="2026"><b id="tlv">2026</b></div></section>
+<section id="stat" class="view" hidden><div class="grid">
+<div class="card"><h3>Jumlah gempa per dekade</h3><div class="cv"><canvas id="c1"></canvas></div></div>
+<div class="card"><h3>Histogram magnitudo</h3><div class="cv"><canvas id="c2"></canvas></div></div>
+<div class="card"><h3>Histogram kedalaman (km)</h3><div class="cv"><canvas id="c3"></canvas></div></div>
+<div class="card"><h3>Gutenberg-Richter</h3><small id="gr"></small><div class="cv"><canvas id="c4"></canvas></div></div>
+<div class="card wide"><h3>Magnitudo terhadap waktu <small>(warna = kedalaman)</small></h3><div class="cv"><canvas id="c5"></canvas></div></div></div></section>
+<section id="cross" class="view" hidden><div class="grid one"><div class="card tall"><h3>Penampang kedalaman <span class="seg"><button id="xl" class="on">Barat–Timur</button><button id="xa">Utara–Selatan</button></span></h3><div class="cv"><canvas id="c6"></canvas></div></div></div></section>
+<section id="tabel" class="view" hidden><div class="bar"><span id="cnt"></span><button id="csv">⬇ Export CSV</button></div><div class="tw"><table id="tb"></table></div></section>
+</div></main>
+<script src="lib/leaflet.js"></script><script src="lib/leaflet-heat.js"></script><script src="lib/chart.umd.js"></script><script src="app.js"></script></body></html>
